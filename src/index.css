@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.main-logo {
+  max-width: 150px;
+}
+body{
+  overflow-x: hidden;
+  background-color: hwb(150 1% 97% / 0.839);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
