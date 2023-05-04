@@ -16,7 +16,7 @@ function RepayModal(props) {
       const accounts = await web3.eth.getAccounts();
       const from = accounts[0];
       const borrowBalance = await axios.get(
-        `http://localhost:8080/getBorrowBalanceOf?account=${from}`
+        `https://lending-and-borrowing-dapp-backend.onrender.com/getBorrowBalanceOf?account=${from}`
       );
       const BorrowBalance = await borrowBalance.data;
       setBorrowBal(BorrowBalance.balance);

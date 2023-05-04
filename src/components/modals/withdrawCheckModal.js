@@ -18,7 +18,7 @@ function WithdrawCheckModal(props) {
     const accounts = await web3.eth.getAccounts();
     const from = accounts[0];
     const isCollateral = await axios.get(
-      `http://localhost:8080/withdrawableAmount?account=${from}&asset=${tokenAddressWithdraw}&amount=${withdrawAmount}`
+      `https://lending-and-borrowing-dapp-backend.onrender.com/withdrawableAmount?account=${from}&asset=${tokenAddressWithdraw}&amount=${withdrawAmount}`
     );
     const userWithdraw = await isCollateral.data;
     if (userWithdraw) {

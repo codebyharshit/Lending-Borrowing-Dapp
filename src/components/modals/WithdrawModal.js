@@ -38,13 +38,13 @@ function WithdrawModal(props) {
     const Token = tokenAddressWithdraw.toLowerCase();
 
     const decimal = await axios.get(
-      `http://localhost:8080/decimals?asset=${tokenAddressWithdraw}`
+      `https://lending-and-borrowing-dapp-backend.onrender.com/decimals?asset=${tokenAddressWithdraw}`
     );
     const decimals = await decimal.data;
     const tokenDecimal = await decimals.decimals;
 
     const withdrawableAmt = await axios.get(
-      `http://localhost:8080/userSupplyInfo?account=${from}`
+      `https://lending-and-borrowing-dapp-backend.onrender.com/userSupplyInfo?account=${from}`
     );
     const WithdrawableAmount = await withdrawableAmt.data.result;
     const assetAmountWithdraw = await WithdrawableAmount[Token];

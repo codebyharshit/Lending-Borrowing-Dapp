@@ -9,7 +9,7 @@ const SupplyAndBorrow = () => {
   useEffect(() => {
     const ratesDetails = async () => {
       const response = await axios.get(
-        "http://localhost:8080/supply&BorrowAPR"
+        "https://lending-and-borrowing-dapp-backend.onrender.com/supply&BorrowAPR"
       );
       setSupplyRate(response.data.SupplyAPR);
       setBorrowRate(response.data.BorrowAPR);

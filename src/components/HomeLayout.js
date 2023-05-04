@@ -52,9 +52,9 @@ export default function HomeLayout() {
 
   useEffect(() => {
     const assetInfo = async () => {
-      const response = await axios.get("http://localhost:8080/allAssetsInfo");
+      const response = await axios.get("https://lending-and-borrowing-dapp-backend.onrender.com/allAssetsInfo");
       setAssetsInfo(response.data);
-      const priceFeed = await axios.get("http://localhost:8080/priceFeed");
+      const priceFeed = await axios.get("https://lending-and-borrowing-dapp-backend.onrender.com/priceFeed");
       const Price = await priceFeed.data;
       setPrices(Price);
       setIsLoading(false);
@@ -92,7 +92,7 @@ export default function HomeLayout() {
             amount: tokenAmount,
           };
           const response = await axios.post(
-            "http://localhost:8080/supplyAsset",
+            "https://lending-and-borrowing-dapp-backend.onrender.com/supplyAsset",
             data
           );
           const repayAmt = response.data;
@@ -201,7 +201,7 @@ export default function HomeLayout() {
       // : "0xDB3cB4f2688daAB3BFf59C24cC42D4B6285828e9";
 
       const response = await axios.get(
-        `http://localhost:8080/allowance?owner=${from}&asset=${assetAddress}`
+        `https://lending-and-borrowing-dapp-backend.onrender.com/allowance?owner=${from}&asset=${assetAddress}`
       );
       const allowance = await response.data;
       setAllowance(allowance.allowance);
@@ -213,7 +213,7 @@ export default function HomeLayout() {
 
   // const getDecimal = async (assetAddress) => {
   //   const decimal = await axios.get(
-  //     `http://localhost:8080/decimals?asset=${assetAddress}`
+  //     `https://lending-and-borrowing-dapp-backend.onrender.com/decimals?asset=${assetAddress}`
   //   );
   //   const decimals = await decimal.data;
   //   const tokenDecimal = await decimals.decimals;
@@ -239,7 +239,7 @@ export default function HomeLayout() {
       console.log("data", data);
 
       setIsLoader(true);
-      const response = await axios.post("http://localhost:8080/approve", data);
+      const response = await axios.post("https://lending-and-borrowing-dapp-backend.onrender.com/approve", data);
       console.log("response.data", response.data);
       const result = await ethereum.request({
         method: "eth_sendTransaction",
@@ -339,7 +339,7 @@ export default function HomeLayout() {
       console.log("data", data);
 
       const response = await axios.post(
-        "http://localhost:8080/supplyAsset",
+        "https://lending-and-borrowing-dapp-backend.onrender.com/supplyAsset",
         data
       );
       console.log("response", response);
@@ -431,7 +431,7 @@ export default function HomeLayout() {
       const from = accounts[0];
 
       // const borrowableAmount = await axios.get(
-      //   `http://localhost:8080/borrowableAmount?account=${from}`
+      //   `https://lending-and-borrowing-dapp-backend.onrender.com/borrowableAmount?account=${from}`
       // );
       // const amount = borrowableAmount.data;
 
@@ -444,7 +444,7 @@ export default function HomeLayout() {
         };
 
         const response = await axios.post(
-          "http://localhost:8080/withdrawAsset",
+          "https://lending-and-borrowing-dapp-backend.onrender.com/withdrawAsset",
           borrowData
         );
 
@@ -543,7 +543,7 @@ export default function HomeLayout() {
           "0x07865c6E87B9F70255377e024ace6630C1Eaa37F";
       console.log("assetAddress", assetAddress);
       const response = await axios.get(
-        `http://localhost:8080/userBalance?address=${from}`
+        `https://lending-and-borrowing-dapp-backend.onrender.com/userBalance?address=${from}`
       );
       const bal = await response.data;
       console.log("bal", bal);
@@ -565,7 +565,7 @@ export default function HomeLayout() {
       const assetAddress = tokenAddressWithdraw;
 
       const borrowAssetInfo = await axios.get(
-        `http://localhost:8080/getBorrowBalanceOf?account=${from}`
+        `https://lending-and-borrowing-dapp-backend.onrender.com/getBorrowBalanceOf?account=${from}`
       );
 
       const Token = assetAddress.toLowerCase();
@@ -580,11 +580,11 @@ export default function HomeLayout() {
       // const borrowedAmount = borrowAssetInfo.data.result.borrowAmount;
 
       const suppliedAssetInfo = await axios.get(
-        `http://localhost:8080/userSupplyInfo?account=${from}`
+        `https://lending-and-borrowing-dapp-backend.onrender.com/userSupplyInfo?account=${from}`
       );
 
       const decimal = await axios.get(
-        `http://localhost:8080/decimals?asset=${tokenAddressWithdraw}`
+        `https://lending-and-borrowing-dapp-backend.onrender.com/decimals?asset=${tokenAddressWithdraw}`
       );
       const decimals = await decimal.data;
       const tokenDecimal = await decimals.decimals;
@@ -603,7 +603,7 @@ export default function HomeLayout() {
         console.log("data", data);
 
         const response = await axios.post(
-          "http://localhost:8080/withdrawAsset",
+          "https://lending-and-borrowing-dapp-backend.onrender.com/withdrawAsset",
           data
         );
         console.log("response", response);
@@ -697,7 +697,7 @@ export default function HomeLayout() {
         // );
         setIsLoader(true);
         const withdrawableAmount = await axios.get(
-          `http://localhost:8080/withdrawableAmount?account=${from}&asset=${assetAddress}&amount=${tokenAmount}`
+          `https://lending-and-borrowing-dapp-backend.onrender.com/withdrawableAmount?account=${from}&asset=${assetAddress}&amount=${tokenAmount}`
         );
         const withdrawApproval = withdrawableAmount.data;
 
@@ -709,7 +709,7 @@ export default function HomeLayout() {
           console.log("data", data);
 
           const response = await axios.post(
-            "http://localhost:8080/withdrawAsset",
+            "https://lending-and-borrowing-dapp-backend.onrender.com/withdrawAsset",
             data
           );
           console.log("response", response);
@@ -824,7 +824,7 @@ export default function HomeLayout() {
     const accounts = await web3.eth.getAccounts();
     const from = accounts[0];
     const borrowBalance = await axios.get(
-      `http://localhost:8080/getBorrowBalanceOf?account=${from}`
+      `https://lending-and-borrowing-dapp-backend.onrender.com/getBorrowBalanceOf?account=${from}`
     );
     const BorrowBalance = await borrowBalance.data;
     const BorrowBalanceOf = await BorrowBalance.balance;
@@ -929,7 +929,7 @@ export default function HomeLayout() {
         const accounts = await web3.eth.getAccounts();
         const from = accounts[0];
         const response = await axios.get(
-          `http://localhost:8080/userSupplyInfo?account=${from}`
+          `https://lending-and-borrowing-dapp-backend.onrender.com/userSupplyInfo?account=${from}`
         );
         const Token = tokenAddress.toLowerCase();
         const supplyAmount = await response.data.result;
@@ -989,7 +989,7 @@ export default function HomeLayout() {
       const accounts = await web3.eth.getAccounts();
       const from = accounts[0];
       const suppliedAmt = await axios.get(
-        `http://localhost:8080/balanceOf?account=${from}`
+        `https://lending-and-borrowing-dapp-backend.onrender.com/balanceOf?account=${from}`
       );
 
       console.log("suppliedAmt", suppliedAmt);
@@ -1000,7 +1000,7 @@ export default function HomeLayout() {
       console.log("supplyAmount", supplyAmount.usdcSuppliedBalance);
 
       const borrowAssetInfo = await axios.get(
-        `http://localhost:8080/getBorrowBalanceOf?account=${from}`
+        `https://lending-and-borrowing-dapp-backend.onrender.com/getBorrowBalanceOf?account=${from}`
       );
 
       const BorrowBalance = await borrowAssetInfo.data;
@@ -1058,7 +1058,7 @@ export default function HomeLayout() {
     const accounts = await web3.eth.getAccounts();
     const from = accounts[0];
     const response = await axios.get(
-      `http://localhost:8080/borrowableAmount?account=${from}`
+      `https://lending-and-borrowing-dapp-backend.onrender.com/borrowableAmount?account=${from}`
     );
     const amount = response.data;
     setBorrowableAmt(amount.borrowableAmount);
@@ -1093,7 +1093,7 @@ export default function HomeLayout() {
     const from = accounts[0];
 
     const response = await axios.get(
-      `http://localhost:8080/borrowableAmount?account=${from}`
+      `https://lending-and-borrowing-dapp-backend.onrender.com/borrowableAmount?account=${from}`
     );
     const borrowAmt = response.data;
     setBorrowableAmt(borrowAmt.borrowableAmount);
