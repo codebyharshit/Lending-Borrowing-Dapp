@@ -97,7 +97,7 @@ const SupplyTable = (props) => {
   // const Prices = [];
 
   // const OraclePrice = async () => {
-  //   const response = await axios.get("http://localhost:8080/priceFeed");
+  //   const response = await axios.get("https://lending-and-borrowing-dapp-backend.onrender.com/priceFeed");
   //   const Price = await response.data;
   //   setPrices(Price);
   // };
@@ -153,7 +153,7 @@ const SupplyTable = (props) => {
     const from = accounts[0];
     let userAssetBalances = [];
     const suppliedAssetInfo = await axios.get(
-      `http://localhost:8080/userSupplyInfo?account=${from}`
+      `https://lending-and-borrowing-dapp-backend.onrender.com/userSupplyInfo?account=${from}`
     );
     const suppliedAmount = await suppliedAssetInfo.data.result;
     await userAssetBalances.push(suppliedAmount);
